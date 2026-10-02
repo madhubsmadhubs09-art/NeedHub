@@ -1,13 +1,397 @@
-CGPA Calculator
-Select your state, university and scheme
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-Select State
+    <title>CGPA Calculator - NeedHub</title>
 
-Select State
-Select University
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-Select University
-Select Scheme
+<body>
 
-Select Scheme
- Continue
+<div class="app">
+
+    <header>
+        <h1>CGPA Calculator</h1>
+        <p>Select your state, university and scheme</p>
+    </header>
+
+
+    <div class="card">
+
+        <!-- STATE -->
+
+        <h3>Select State</h3>
+
+        <select id="state" onchange="loadUniversities()">
+
+            <option value="">
+                Select State
+            </option>
+
+            <option value="karnataka">
+                Karnataka
+            </option>
+
+        </select>
+
+
+        <!-- UNIVERSITY -->
+
+        <h3 style="margin-top: 25px;">
+            Select University
+        </h3>
+
+        <select id="university"
+                onchange="loadSchemes()">
+
+            <option value="">
+                Select University
+            </option>
+
+        </select>
+
+
+        <!-- SCHEME -->
+
+        <h3 style="margin-top: 25px;">
+            Select Scheme
+        </h3>
+
+        <select id="scheme">
+
+            <option value="">
+                Select Scheme
+            </option>
+
+        </select>
+
+
+        <!-- BUTTON -->
+
+        <button
+            onclick="continueToCalculator()"
+            style="margin-top: 25px;">
+
+            Continue
+
+        </button>
+
+
+        <p id="message"
+           style="margin-top: 15px;">
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* ================================
+   LOAD UNIVERSITIES
+================================ */
+
+function loadUniversities() {
+
+    let state =
+        document.getElementById("state").value;
+
+    let university =
+        document.getElementById("university");
+
+    let scheme =
+        document.getElementById("scheme");
+
+
+    university.innerHTML =
+        '<option value="">Select University</option>';
+
+    scheme.innerHTML =
+        '<option value="">Select Scheme</option>';
+
+
+    if (state === "karnataka") {
+
+        let universities = [
+
+            ["vtu",
+             "Visvesvaraya Technological University (VTU)"],
+
+            ["bu",
+             "Bangalore University"],
+
+            ["bcu",
+             "Bengaluru City University"],
+
+            ["mysore",
+             "University of Mysore"],
+
+            ["mangalore",
+             "Mangalore University"],
+
+            ["kuvempu",
+             "Kuvempu University"],
+
+            ["tumkur",
+             "Tumkur University"],
+
+            ["davangere",
+             "Davangere University"],
+
+            ["rcu",
+             "Rani Channamma University"],
+
+            ["vsku",
+             "Vijayanagara Sri Krishnadevaraya University"],
+
+            ["karnatak",
+             "Karnatak University"],
+
+            ["gulbarga",
+             "Gulbarga University"],
+
+            ["kannada",
+             "Kannada University"],
+
+            ["rguhs",
+             "Rajiv Gandhi University of Health Sciences"],
+
+            ["uas",
+             "University of Agricultural Sciences"],
+
+            ["other",
+             "Other University"]
+
+        ];
+
+
+        universities.forEach(function(item) {
+
+            let option =
+                document.createElement("option");
+
+            option.value = item[0];
+
+            option.textContent = item[1];
+
+            university.appendChild(option);
+
+        });
+
+    }
+
+}
+
+
+/* ================================
+   LOAD SCHEMES
+================================ */
+
+function loadSchemes() {
+
+    let university =
+        document.getElementById("university").value;
+
+    let scheme =
+        document.getElementById("scheme");
+
+
+    scheme.innerHTML =
+        '<option value="">Select Scheme</option>';
+
+
+    /*
+       VTU SCHEMES
+    */
+
+    if (university === "vtu") {
+
+        scheme.innerHTML += `
+
+            <option value="2025">
+                2025 Scheme
+            </option>
+
+            <option value="2022">
+                2022 Scheme
+            </option>
+
+            <option value="2018">
+                2018 Scheme
+            </option>
+
+            <option value="2017">
+                2017 Scheme
+            </option>
+
+            <option value="2015">
+                2015 Scheme
+            </option>
+
+            <option value="2010">
+                2010 Scheme
+            </option>
+
+        `;
+
+    }
+
+
+    /*
+       OTHER UNIVERSITIES
+    */
+
+    else if (university !== "") {
+
+        scheme.innerHTML += `
+
+            <option value="current">
+                Current Scheme
+            </option>
+
+            <option value="other">
+                Other Scheme
+            </option>
+
+        `;
+
+    }
+
+}
+
+
+/* ================================
+   CONTINUE
+================================ */
+
+function continueToCalculator() {
+
+    let state =
+        document.getElementById("state").value;
+
+    let university =
+        document.getElementById("university").value;
+
+    let scheme =
+        document.getElementById("scheme").value;
+
+    let message =
+        document.getElementById("message");
+
+
+    /*
+       CHECK STATE
+    */
+
+    if (state === "") {
+
+        message.innerText =
+            "Please select a state.";
+
+        return;
+
+    }
+
+
+    /*
+       CHECK UNIVERSITY
+    */
+
+    if (university === "") {
+
+        message.innerText =
+            "Please select a university.";
+
+        return;
+
+    }
+
+
+    /*
+       CHECK SCHEME
+    */
+
+    if (scheme === "") {
+
+        message.innerText =
+            "Please select a scheme.";
+
+        return;
+
+    }
+
+
+    /*
+       VTU
+    */
+
+    if (university === "vtu") {
+
+        if (scheme === "2025") {
+
+            window.location.href =
+                "/cgpa/2025";
+
+        }
+
+        else if (scheme === "2022") {
+
+            window.location.href =
+                "/cgpa/2022";
+
+        }
+
+        else if (scheme === "2018") {
+
+            message.innerText =
+                "VTU 2018 Scheme calculator will be added next.";
+
+        }
+
+        else if (scheme === "2017") {
+
+            message.innerText =
+                "VTU 2017 Scheme calculator will be added next.";
+
+        }
+
+        else if (scheme === "2015") {
+
+            message.innerText =
+                "VTU 2015 Scheme calculator will be added next.";
+
+        }
+
+        else if (scheme === "2010") {
+
+            message.innerText =
+                "VTU 2010 Scheme calculator will be added next.";
+
+        }
+
+    }
+
+
+    /*
+       OTHER UNIVERSITIES
+    */
+
+    else {
+
+        message.innerText =
+            "Calculator for this university will be added soon.";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
