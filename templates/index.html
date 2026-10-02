@@ -1,29 +1,69 @@
-NeedHub
-What do you need today?
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeedHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-Search anything...
- Search
-Explore
-🎓
-Education
-Study, exams, calculators & more
+<body>
 
-💼
-Jobs
-Jobs, resumes & interviews
+    <div class="app">
 
-🌾
-Agriculture
-Crops, farming & schemes
+        <header>
+            <h1>NeedHub</h1>
+            <p>What do you need today?</p>
+        </header>
 
-🏛️
-Government
-Schemes & useful services
+        <div class="search-box">
+            <input type="text" placeholder="Search anything...">
+            <button>Search</button>
+        </div>
 
-🏥
-Health
-Health tools & information
+        <h2>Explore</h2>
 
-💰
-Finance
-Money & financial calculators
+        <div class="categories">
+
+        <a href="/education" class="card">
+           <div class="icon">🎓</div>
+           <h3>Education</h3>
+           <p>Study, exams, calculators & more</p>
+        </a>
+
+            <div class="card">
+                <div class="icon">💼</div>
+                <h3>Jobs</h3>
+                <p>Jobs, resumes & interviews</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🌾</div>
+                <h3>Agriculture</h3>
+                <p>Crops, farming & schemes</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏛️</div>
+                <h3>Government</h3>
+                <p>Schemes & useful services</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏥</div>
+                <h3>Health</h3>
+                <p>Health tools & information</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">💰</div>
+                <h3>Finance</h3>
+                <p>Money & financial calculators</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
