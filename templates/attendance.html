@@ -1,9 +1,119 @@
-Attendance Calculator
-Calculate your attendance percentage
+<!DOCTYPE html>
+<html lang="en">
 
-Enter Attendance Details
-Classes Attended
- 
-Total Classes
-Calculate Attendance
-Attendance: —
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance Calculator - NeedHub</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <h1>Attendance Calculator</h1>
+        <p>Calculate your attendance percentage</p>
+    </header>
+
+    <div class="card">
+
+        <h3>Enter Attendance Details</h3>
+
+        <div class="subject-row">
+
+            <input
+                type="number"
+                id="attended"
+                placeholder="Classes Attended"
+                min="0">
+
+            <input
+                type="number"
+                id="total"
+                placeholder="Total Classes"
+                min="1">
+
+        </div>
+
+        <button onclick="calculateAttendance()">
+            Calculate Attendance
+        </button>
+
+        <h2 id="result">
+            Attendance: —
+        </h2>
+
+        <p id="message"></p>
+
+    </div>
+
+</div>
+
+<script>
+
+function calculateAttendance() {
+
+    let attended =
+        parseFloat(document.getElementById("attended").value);
+
+    let total =
+        parseFloat(document.getElementById("total").value);
+
+    let result =
+        document.getElementById("result");
+
+    let message =
+        document.getElementById("message");
+
+
+    if (isNaN(attended) || isNaN(total)) {
+
+        result.innerText = "Attendance: —";
+        message.innerText =
+            "Please enter both values.";
+
+        return;
+    }
+
+
+    if (total <= 0) {
+
+        result.innerText = "Attendance: —";
+        message.innerText =
+            "Total classes must be greater than 0.";
+
+        return;
+    }
+
+
+    if (attended < 0 || attended > total) {
+
+        result.innerText = "Attendance: —";
+        message.innerText =
+            "Please enter valid attendance.";
+
+        return;
+    }
+
+
+    let percentage =
+        (attended / total) * 100;
+
+
+    result.innerText =
+        "Attendance: " + percentage.toFixed(2) + "%";
+
+    message.innerText = "";
+
+}
+
+</script>
+
+</body>
+
+</html>
