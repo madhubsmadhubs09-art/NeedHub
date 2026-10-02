@@ -1,62 +1,147 @@
-SGPA Calculator
-Enter your marks, maximum marks and credits
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGPA Calculator - NeedHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-Subject Details
-Subject 1
- 
-Marks
- 
-100
- 
-Credits
-Subject 2
- 
-Marks
- 
-100
- 
-Credits
-Subject 3
- 
-Marks
- 
-100
- 
-Credits
-Subject 4
- 
-Marks
- 
-100
- 
-Credits
-Subject 5
- 
-Marks
- 
-100
- 
-Credits
-Subject 6
- 
-Marks
- 
-100
- 
-Credits
-Subject 7
- 
-Marks
- 
-100
- 
-Credits
-Subject 8
- 
-Marks
- 
-100
- 
-Credits
-Calculate SGPA
-SGPA: —
+<body>
+
+<div class="app">
+
+    <header>
+        <h1>SGPA Calculator</h1>
+        <p>Enter your marks, maximum marks and credits</p>
+    </header>
+
+    <div class="card">
+
+        <h3>Subject Details</h3>
+
+        <div class="subject-row">
+            <input type="text" placeholder="Subject 1">
+            <input type="number" placeholder="Marks">
+            <input type="number" placeholder="Max Marks" value="100">
+            <input type="number" placeholder="Credits">
+        </div>
+
+        <div class="subject-row">
+            <input type="text" placeholder="Subject 2">
+            <input type="number" placeholder="Marks">
+            <input type="number" placeholder="Max Marks" value="100">
+            <input type="number" placeholder="Credits">
+        </div>
+
+        <div class="subject-row">
+            <input type="text" placeholder="Subject 3">
+            <input type="number" placeholder="Marks">
+            <input type="number" placeholder="Max Marks" value="100">
+            <input type="number" placeholder="Credits">
+        </div>
+
+        <div class="subject-row">
+            <input type="text" placeholder="Subject 4">
+            <input type="number" placeholder="Marks">
+            <input type="number" placeholder="Max Marks" value="100">
+            <input type="number" placeholder="Credits">
+        </div>
+
+        <div class="subject-row">
+            <input type="text" placeholder="Subject 5">
+            <input type="number" placeholder="Marks">
+            <input type="number" placeholder="Max Marks" value="100">
+            <input type="number" placeholder="Credits">
+        </div>
+
+        <div class="subject-row">
+            <input type="text" placeholder="Subject 6">
+            <input type="number" placeholder="Marks">
+            <input type="number" placeholder="Max Marks" value="100">
+            <input type="number" placeholder="Credits">
+        </div>
+
+        <div class="subject-row">
+            <input type="text" placeholder="Subject 7">
+            <input type="number" placeholder="Marks">
+            <input type="number" placeholder="Max Marks" value="100">
+            <input type="number" placeholder="Credits">
+        </div>
+
+        <div class="subject-row">
+            <input type="text" placeholder="Subject 8">
+            <input type="number" placeholder="Marks">
+            <input type="number" placeholder="Max Marks" value="100">
+            <input type="number" placeholder="Credits">
+        </div>
+
+        <button onclick="calculateSGPA()">Calculate SGPA</button>
+
+        <h2 id="result">SGPA: —</h2>
+
+    </div>
+
+</div>
+
+<script>
+
+function calculateSGPA() {
+
+    let rows = document.querySelectorAll(".subject-row");
+
+    let totalCredits = 0;
+    let totalGradePoints = 0;
+
+    rows.forEach(row => {
+
+        let inputs = row.querySelectorAll("input");
+
+        let marks = parseFloat(inputs[1].value);
+        let maxMarks = parseFloat(inputs[2].value);
+        let credits = parseFloat(inputs[3].value);
+
+        if (isNaN(marks) || isNaN(maxMarks) || isNaN(credits)) {
+            return;
+        }
+
+        let percentage = (marks / maxMarks) * 100;
+
+        let gradePoint;
+
+        if (percentage >= 90) {
+            gradePoint = 10;
+        } else if (percentage >= 80) {
+            gradePoint = 9;
+        } else if (percentage >= 70) {
+            gradePoint = 8;
+        } else if (percentage >= 60) {
+            gradePoint = 7;
+        } else if (percentage >= 50) {
+            gradePoint = 6;
+        } else if (percentage >= 40) {
+            gradePoint = 5;
+        } else {
+            gradePoint = 0;
+        }
+
+        totalCredits += credits;
+        totalGradePoints += gradePoint * credits;
+    });
+
+    if (totalCredits === 0) {
+        document.getElementById("result").innerText =
+            "Please enter marks and credits.";
+        return;
+    }
+
+    let sgpa = totalGradePoints / totalCredits;
+
+    document.getElementById("result").innerText =
+        "SGPA: " + sgpa.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>
