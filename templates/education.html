@@ -1,27 +1,63 @@
-Education
-Useful tools for students
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - NeedHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-Education Tools
-📊
-SGPA Calculator
-Calculate your semester GPA
+<body>
 
-🎓
-CGPA Calculator 
-Calculate your overall CGPA
+<div class="app">
 
-🧮
-Percentage Calculator
-Calculate marks percentage
+    <header>
+        <h1>Education</h1>
+        <p>Useful tools for students</p>
+    </header>
 
-📅
-Attendance Calculator
-Check your attendance percentage
+    <h2>Education Tools</h2>
 
-📚
-Study Planner
-Plan your study schedule
+    <div class="categories">
 
-🏆
-Scholarships
-Find scholarships for students
+    <a href="/sgpa" class="card">
+        <div class="icon">📊</div>
+        <h3>SGPA Calculator</h3>
+        <p>Calculate your semester GPA</p>
+    </a>
+
+        <a href="/cgpa" class="card">
+       <div class="icon">🎓</div>
+       <h3>CGPA Calculator</h3>
+       <p>Calculate your overall CGPA</p>
+      </a>
+        <a href="/percentage" class="card">
+        <div class="icon">🧮</div>
+         <h3>Percentage Calculator</h3>
+         <p>Calculate marks percentage</p>
+        </a>
+
+        <a href="/attendance" class="card">
+        <div class="icon">📅</div>
+        <h3>Attendance Calculator</h3>
+        <p>Check your attendance percentage</p>
+        </a>
+
+        <a href="/study-planner" class="card">
+       <div class="icon">📚</div>
+        <h3>Study Planner</h3>
+        <p>Plan your study schedule</p>
+     </a>
+
+       <a href="/scholarships" class="card">
+    <div class="icon">🏆</div>
+    <h3>Scholarships</h3>
+    <p>Find scholarships for students</p>
+</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
