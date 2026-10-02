@@ -1,13 +1,140 @@
-Study Planner
-Plan your study tasks
+<!DOCTYPE html>
+<html lang="en">
 
-Add Study Task
-Subject
- 
-Topic / Task
- 
-mm/dd/yyyy
- 
-Study hours
- Add Task
-My Study Tasks
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study Planner - NeedHub</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <h1>Study Planner</h1>
+        <p>Plan your study tasks</p>
+    </header>
+
+    <div class="card">
+
+        <h3>Add Study Task</h3>
+
+        <input
+            type="text"
+            id="subject"
+            placeholder="Subject"
+            style="width:100%; padding:15px; margin:10px 0;">
+
+        <input
+            type="text"
+            id="topic"
+            placeholder="Topic / Task"
+            style="width:100%; padding:15px; margin:10px 0;">
+
+        <input
+            type="date"
+            id="date"
+            style="width:100%; padding:15px; margin:10px 0;">
+
+        <input
+            type="number"
+            id="hours"
+            placeholder="Study hours"
+            min="1"
+            style="width:100%; padding:15px; margin:10px 0;">
+
+        <button onclick="addTask()">
+            Add Task
+        </button>
+
+    </div>
+
+    <h2 style="margin-top:30px;">
+        My Study Tasks
+    </h2>
+
+    <div id="tasks"></div>
+
+</div>
+
+
+<script>
+
+function addTask() {
+
+    let subject =
+        document.getElementById("subject").value;
+
+    let topic =
+        document.getElementById("topic").value;
+
+    let date =
+        document.getElementById("date").value;
+
+    let hours =
+        document.getElementById("hours").value;
+
+
+    if (subject === "" ||
+        topic === "" ||
+        date === "" ||
+        hours === "") {
+
+        alert("Please fill all details.");
+
+        return;
+    }
+
+
+    let task =
+        document.createElement("div");
+
+    task.className = "card";
+
+    task.style.marginTop = "15px";
+
+
+    task.innerHTML = `
+
+        <h3>${subject}</h3>
+
+        <p>
+            <strong>Task:</strong> ${topic}
+        </p>
+
+        <p>
+            <strong>Date:</strong> ${date}
+        </p>
+
+        <p>
+            <strong>Study Time:</strong> ${hours} hour(s)
+        </p>
+
+        <button onclick="this.parentElement.remove()">
+            Remove
+        </button>
+
+    `;
+
+
+    document.getElementById("tasks")
+        .appendChild(task);
+
+
+    document.getElementById("subject").value = "";
+    document.getElementById("topic").value = "";
+    document.getElementById("date").value = "";
+    document.getElementById("hours").value = "";
+
+}
+
+</script>
+
+</body>
+
+</html>
