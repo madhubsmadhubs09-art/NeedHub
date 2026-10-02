@@ -1,18 +1,93 @@
-Scholarships
-Find scholarship opportunities
+<!DOCTYPE html>
+<html lang="en">
 
-🎓
-Karnataka State Scholarship Portal
-Find Karnataka government scholarship opportunities for eligible students.
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scholarships - NeedHub</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <h1>Scholarships</h1>
+        <p>Find scholarship opportunities</p>
+    </header>
 
 
-Visit SSP
-🇮🇳
-National Scholarship Portal
-Find scholarships provided through the Government of India's National Scholarship Portal.
+    <div class="card">
+
+        <div class="icon">🎓</div>
+
+        <h3>Karnataka State Scholarship Portal</h3>
+
+        <p>
+            Find Karnataka government scholarship
+            opportunities for eligible students.
+        </p>
+
+        <br>
+
+        <a href="https://ssp.postmatric.karnataka.gov.in/"
+           target="_blank">
+
+            <button>
+                Visit SSP
+            </button>
+
+        </a>
+
+    </div>
 
 
-Visit NSP
-🔎
-Scholarship Search
-More scholarship categories and eligibility information can be added here later.
+    <div class="card" style="margin-top: 20px;">
+
+        <div class="icon">🇮🇳</div>
+
+        <h3>National Scholarship Portal</h3>
+
+        <p>
+            Find scholarships provided through
+            the Government of India's National
+            Scholarship Portal.
+        </p>
+
+        <br>
+
+        <a href="https://scholarships.gov.in/"
+           target="_blank">
+
+            <button>
+                Visit NSP
+            </button>
+
+        </a>
+
+    </div>
+
+
+    <div class="card" style="margin-top: 20px;">
+
+        <div class="icon">🔎</div>
+
+        <h3>Scholarship Search</h3>
+
+        <p>
+            More scholarship categories and
+            eligibility information can be added
+            here later.
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
