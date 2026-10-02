@@ -1,9 +1,111 @@
-Percentage Calculator
-Calculate your marks percentage
 
-Enter Your Marks
-Marks Obtained
- 
-Maximum Marks
-Calculate Percentage
-Percentage: —
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Percentage Calculator - NeedHub</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <h1>Percentage Calculator</h1>
+        <p>Calculate your marks percentage</p>
+    </header>
+
+
+    <div class="card">
+
+        <h3>Enter Your Marks</h3>
+
+        <div class="subject-row">
+
+            <input
+                type="number"
+                id="obtained"
+                placeholder="Marks Obtained"
+                min="0">
+
+            <input
+                type="number"
+                id="maximum"
+                placeholder="Maximum Marks"
+                min="1">
+
+        </div>
+
+
+        <button onclick="calculatePercentage()">
+            Calculate Percentage
+        </button>
+
+
+        <h2 id="result">
+            Percentage: —
+        </h2>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function calculatePercentage() {
+
+    let obtained =
+        parseFloat(document.getElementById("obtained").value);
+
+    let maximum =
+        parseFloat(document.getElementById("maximum").value);
+
+
+    if (isNaN(obtained) || isNaN(maximum)) {
+
+        document.getElementById("result").innerText =
+            "Please enter both marks.";
+
+        return;
+    }
+
+
+    if (maximum <= 0) {
+
+        document.getElementById("result").innerText =
+            "Maximum marks must be greater than 0.";
+
+        return;
+    }
+
+
+    if (obtained < 0 || obtained > maximum) {
+
+        document.getElementById("result").innerText =
+            "Please enter valid marks.";
+
+        return;
+    }
+
+
+    let percentage =
+        (obtained / maximum) * 100;
+
+
+    document.getElementById("result").innerText =
+        "Percentage: " + percentage.toFixed(2) + "%";
+
+}
+
+</script>
+
+</body>
+
+</html>
